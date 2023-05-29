@@ -7,7 +7,10 @@ builder.Services.AddAuthentication(builder =>
     {
         builder.DefaultScheme = NWS4AuthenticationDefaults.AuthenticationScheme;
     })
-    .AddNWS4Authentication<NWS4AuthenticationHandler>();
+    .AddNWS4Authentication<NWS4AuthenticationHandler>(opts =>
+    {
+        opts.Signer.AllowForwardedHostHeader = true;
+    });
 
 builder.Services.AddControllers();
 
